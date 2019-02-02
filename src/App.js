@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import AddCategory from './components/AddCategory.js'
+import AddBill from './components/AddBill.js'
+import NavBar from './components/NavBar.js'
+import Chart from './components/Chart.js'
+import BillsTable from './components/BillsTable.js'
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
+    </div>
+  );
 }
 
-export default App;
+export default App
