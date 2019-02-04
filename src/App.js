@@ -7,7 +7,7 @@ import BillsTable from './components/BillsTable.js'
 import './App.css';
 
 function App() {
-  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(true)
+  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(false)
   const [categories, setCategories] = useState([])
 
   const addCategory = category => {
@@ -35,7 +35,7 @@ function App() {
       setCategories(categoriesInLocalStorage)
     }
 
-    if (!categoriesInLocalStorage) {
+    if (!categoriesInLocalStorage.length) {
       setShouldShowAddCategory(true)
     }
   }, [])
