@@ -9,8 +9,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <NavBar />
+      <div className="container flex">
+        <div className="w-1/2">
+          <BillsTable />
+        </div>
+        <div className="w-1/2">
+          <Chart />
+        </div>
+      </div>
     </div>
   );
 }
