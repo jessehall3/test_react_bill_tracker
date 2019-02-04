@@ -46,7 +46,7 @@ function App() {
         <AddCategory onSubmit={addCategory} />
       ) : (
         <div>
-          <NavBar />
+          <NavBar categories={categories} />
           <div className="container flex">
             <div className="w-1/2">
               <BillsTable />
