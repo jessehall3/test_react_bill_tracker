@@ -23,7 +23,7 @@ function NavBar(props) {
     <div className="App">
       <ul className="list-reset inline flex justify-center border-b-4 mb-0">
         {catItems()}
-        <li className={liStyle}>➕</li>
+        <li className={liStyle} onClick={triggerShowAddCategory}>➕</li>
       </ul>
     </div>
   )
