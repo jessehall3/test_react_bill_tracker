@@ -11,10 +11,10 @@ function App() {
   const [categories, setCategories] = useState([])
 
   const addCategory = category => {
-    setCategories([...categories, category])
-    setShouldShowAddCategory(false)
-    console.log(category);
-    console.log(categories);
+    if( categories.indexOf(category) === -1){
+      setCategories([...categories, category])
+    }
+      setShouldShowAddCategory(false)
   }
 
   return (
