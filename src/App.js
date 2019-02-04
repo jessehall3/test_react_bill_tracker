@@ -10,15 +10,21 @@ function App() {
   const [shouldShowAddCategory, setShouldShowAddCategory] = useState(true)
   return (
     <div className="App">
-      <NavBar />
-      <div className="container flex">
-        <div className="w-1/2">
-          <BillsTable />
+      {shouldShowAddCategory ? (
+        <AddCategory />
+      ) : (
+        <div>
+          <NavBar />
+          <div className="container flex">
+            <div className="w-1/2">
+              <BillsTable />
+            </div>
+            <div className="w-1/2">
+              <Chart />
+            </div>
+          </div>
         </div>
-        <div className="w-1/2">
-          <Chart />
-        </div>
-      </div>
+      )}
     </div>
   );
 }
