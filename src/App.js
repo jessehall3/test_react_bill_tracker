@@ -22,6 +22,10 @@ function App() {
     localStorage.setItem('categories', JSON.stringify(updatedCategories))
   }
 
+  const showAddCategory = () => {
+    setShouldShowAddCategory(true)
+  }
+
   useEffect(() => {
     let categoriesInLocalStorage = JSON.parse(
       localStorage.getItem('categories')
@@ -46,7 +50,7 @@ function App() {
         <AddCategory onSubmit={addCategory} />
       ) : (
         <div>
-          <NavBar categories={categories} />
+          <NavBar categories={categories} showAddCategory={showAddCategory}/>
           <div className="container flex">
             <div className="w-1/2">
               <BillsTable />
