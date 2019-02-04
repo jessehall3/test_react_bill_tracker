@@ -8,10 +8,19 @@ import './App.css';
 
 function App() {
   const [shouldShowAddCategory, setShouldShowAddCategory] = useState(true)
+  const [categories, setCategories] = useState([])
+
+  const addCategory = category => {
+    setCategories([...categories, category])
+    setShouldShowAddCategory(false)
+    console.log(category);
+    console.log(categories);
+  }
+
   return (
     <div className="App">
       {shouldShowAddCategory ? (
-        <AddCategory />
+        <AddCategory onSubmit={addCategory} />
       ) : (
         <div>
           <NavBar />
