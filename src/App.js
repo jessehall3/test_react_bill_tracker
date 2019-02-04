@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddCategory from './components/AddCategory.js'
 import AddBill from './components/AddBill.js'
 import NavBar from './components/NavBar.js'
@@ -7,6 +7,7 @@ import BillsTable from './components/BillsTable.js'
 import './App.css';
 
 function App() {
+  const [shouldShowAddCategory, setShouldShowAddCategory] = useState(true)
   return (
     <div className="App">
       <NavBar />
