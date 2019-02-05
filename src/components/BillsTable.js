@@ -2,6 +2,10 @@ import React from 'react';
 import Moment from 'react-moment'
 
 function BillsTable(props) {
+  const triggerShowAddBill = () => {
+    props.showAddBill()
+  }
+
   return (
     <table className="table">
       <thead className="bg-blue text-white">
@@ -13,6 +17,11 @@ function BillsTable(props) {
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td colSpan="4">
+          <button className="underline" onClick={triggerShowAddBill}>Add New Bill</button>
+          </td>
+        </tr>
         {props.bills.map((bill, index) => {
           return (
             <tr className="p4" key={index}>

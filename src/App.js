@@ -37,6 +37,10 @@ function App() {
     setShouldShowAddCategory(true)
   }
 
+  const showAddBill = () => {
+    setShouldShowAddBill(true)
+  }
+
   useEffect(() => {
     const categoriesInLocalStorage = JSON.parse(
       localStorage.getItem('categories')
@@ -59,13 +63,13 @@ function App() {
     {shouldShowAddCategory ? (
           <AddCategory onSubmit={addCategory} />
         ) : shouldShowAddBill ? (
-          <AddBill onSubmit={addBill} categories={categories}/>
+          <AddBill onSubmit={addBill} categories={categories} />
         ) : (
         <div>
           <NavBar categories={categories} showAddCategory={showAddCategory}/>
           <div className="container flex">
             <div className="w-1/2">
-              <BillsTable bills={bills} />
+              <BillsTable bills={bills} showAddBill={showAddBill} />
             </div>
             <div className="w-1/2">
               <Chart />
