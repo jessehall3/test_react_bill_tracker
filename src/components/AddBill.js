@@ -55,6 +55,7 @@ function AddBill(props) {
             <input
             className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
             placeholder="Enter Bill Amount, eg $100.00"
+            type="number"
             ref={inputBillAmount}
             />
             <button
