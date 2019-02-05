@@ -7,11 +7,20 @@ import BillsTable from './components/BillsTable.js'
 import './App.css';
 
 function App() {
+  const [activeCategory, setActiveCategory] = useState('foo')
   const [categories, setCategories] = useState([])
   const [bills, setBills] = useState([])
 
   const [shouldShowAddCategory, setShouldShowAddCategory] = useState(false)
   const [shouldShowAddBill, setShouldShowAddBill] = useState(false)
+
+  const activeBills = () => {
+    return bills
+      .filter(bill =>
+        activeCategory ? bill.category === activeCategory : true
+      )
+      .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
+  }
 
   const addCategory = category => {
     if( categories.indexOf(category) !== -1 ){
@@ -76,10 +85,10 @@ function App() {
           <NavBar categories={categories} showAddCategory={showAddCategory}/>
           <div className="container flex">
             <div className="w-1/2">
-              <BillsTable bills={bills} showAddBill={showAddBill} removeBill={removeBill}/>
+              <BillsTable bills={activeBills()} showAddBill={showAddBill} removeBill={removeBill}/>
             </div>
             <div className="w-1/2">
-              <Chart bills={bills} />
+              <Chart bills={activeBills()} />
             </div>
           </div>
         </div>
