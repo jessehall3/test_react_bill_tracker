@@ -8,6 +8,7 @@ import './App.css';
 
 function App() {
   const [shouldShowAddCategory, setShouldShowAddCategory] = useState(false)
+  const [shouldShowAddBill, setShouldShowAddBill] = useState(true)
   const [categories, setCategories] = useState([])
 
   const addCategory = category => {
@@ -27,13 +28,9 @@ function App() {
   }
 
   useEffect(() => {
-    let categoriesInLocalStorage = JSON.parse(
+    const categoriesInLocalStorage = JSON.parse(
       localStorage.getItem('categories')
-    )
-
-    if (!Array.isArray(categoriesInLocalStorage)){
-      categoriesInLocalStorage = []
-    }
+    ) || []
 
     if (categoriesInLocalStorage !== categories) {
       setCategories(categoriesInLocalStorage)
@@ -46,9 +43,11 @@ function App() {
 
   return (
     <div className="App">
-      {shouldShowAddCategory ? (
-        <AddCategory onSubmit={addCategory} />
-      ) : (
+    {shouldShowAddCategory ? (
+          <AddCategory onSubmit={addCategory} />
+        ) : shouldShowAddBill ? (
+          <AddBill />
+        ) : (
         <div>
           <NavBar categories={categories} showAddCategory={showAddCategory}/>
           <div className="container flex">
