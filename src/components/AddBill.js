@@ -3,24 +3,14 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 function AddBill(props) {
-  // const [amount, setAmount] = useState(0)
   const [category, setCategory] = useState(props.categories[0])
   const [date, setDate] = useState(new Date())
 
   const inputBillAmount = useRef(0);
-  const onButtonClick = () => {
-    // `current` points to the mounted text input element
-    inputBillAmount.current.focus();
-  };
 
   const handleChangeDate = newDate => {
     setDate(newDate)
   }
-
-  // const handleChangeAmount = e => {
-  //   const value = parseInt(e.target.value) || 0
-  //   setAmount(value, 10)
-  // }
 
   const handleChangeCategory = e => {
     setCategory(e.target.value)
@@ -34,7 +24,6 @@ function AddBill(props) {
   const handleSubmit = e => {
     e.preventDefault()
     const amount = inputBillAmount.current.value;
-    console.log("AMOUNT: ", amount);
     if (!amount && amount !== 0) {
       alert('Please enter an amount')
       return
