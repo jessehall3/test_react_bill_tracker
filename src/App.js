@@ -46,7 +46,7 @@ function App() {
     {shouldShowAddCategory ? (
           <AddCategory onSubmit={addCategory} />
         ) : shouldShowAddBill ? (
-          <AddBill />
+          <AddBill categories={categories}/>
         ) : (
         <div>
           <NavBar categories={categories} showAddCategory={showAddCategory}/>

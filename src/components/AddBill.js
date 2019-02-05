@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 
 function AddBill(props) {
   const [amount, setAmount] = useState(0)
+  const [category, setCategory] = useState(props.categories[0])
 
   const handleChangeAmount = e => {
     setAmount(parseInt(e.target.value), 10)
+  }
+
+  const handleChangeCategory = e => {
+    setCategory(e.target.value)
   }
 
   const handleSubmit = e => {
@@ -24,6 +29,17 @@ function AddBill(props) {
           <h1 className="text-grey-darkest">Enter a new Bill</h1>
           <p>E.g. 'Electricity' or 'Gas' or 'Internet'</p>
           <div className="flex mt-4">
+            <select>
+            {props.categories
+              ? props.categories.map((value, index) => {
+                  return (
+                    <option key={index} value={value}>
+                      {value}
+                    </option>
+                  )
+                })
+              : ''}
+            </select>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
               placeholder="Enter Bill"
