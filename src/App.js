@@ -11,7 +11,7 @@ function App() {
   const [bills, setBills] = useState([])
 
   const [shouldShowAddCategory, setShouldShowAddCategory] = useState(false)
-  const [shouldShowAddBill, setShouldShowAddBill] = useState(true)
+  const [shouldShowAddBill, setShouldShowAddBill] = useState(false)
 
   const addCategory = category => {
     if( categories.indexOf(category) !== -1 ){
@@ -65,7 +65,7 @@ function App() {
           <NavBar categories={categories} showAddCategory={showAddCategory}/>
           <div className="container flex">
             <div className="w-1/2">
-              <BillsTable />
+              <BillsTable bills={bills} />
             </div>
             <div className="w-1/2">
               <Chart />
