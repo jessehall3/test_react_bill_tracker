@@ -5,14 +5,34 @@ function NavBar(props) {
     props.showAddCategory()
   }
 
-  const liStyle = 'p-4 inline bg-grey-lighter hover:bg-grey-light uppercase font-black cursor-pointer'
+  const setNewActiveCategory = index => {
+    props.setActiveCategory(props.categories[index])
+  }
 
+  const isActive = index => {
+    return props.activeCategory === props.categories[index]
+  }
+  const liStyle = 'p-4 inline hover:bg-grey-light uppercase font-black cursor-pointer'
+
+  const makeItem = (value, index) => {
+    const activeClass = isActive(index) ? ' bg-grey-dark' : ' bg-grey-lighter'
+    return <li className={liStyle + activeClass}
+      onClick={() => setNewActiveCategory(index)}
+      key={index}>
+        {value}
+      </li>
+  }
 
   const catItems = () => {
     let items = '<li>No categories</li>'
     if (props.categories.length){
       items = props.categories.map((value, index) => {
-        return <li className={liStyle} key={index}>{value}</li>
+        const activeClass = isActive(index) ? ' bg-grey-dark' : ' bg-grey-lighter'
+        return <li className={liStyle + activeClass}
+          onClick={() => setNewActiveCategory(index)}
+          key={index}>
+            {value}
+          </li>
       })
     }
     return items

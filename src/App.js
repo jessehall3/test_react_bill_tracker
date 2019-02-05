@@ -7,7 +7,7 @@ import BillsTable from './components/BillsTable.js'
 import './App.css';
 
 function App() {
-  const [activeCategory, setActiveCategory] = useState('foo')
+  const [activeCategory, setActiveCategory] = useState()
   const [categories, setCategories] = useState([])
   const [bills, setBills] = useState([])
 
@@ -82,7 +82,12 @@ function App() {
           <AddBill onSubmit={addBill} categories={categories} />
         ) : (
         <div>
-          <NavBar categories={categories} showAddCategory={showAddCategory}/>
+          <NavBar
+            categories={categories}
+            showAddCategory={showAddCategory}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
           <div className="container flex">
             <div className="w-1/2">
               <BillsTable bills={activeBills()} showAddBill={showAddBill} removeBill={removeBill}/>
