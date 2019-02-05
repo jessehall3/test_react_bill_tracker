@@ -33,6 +33,13 @@ function App() {
     localStorage.setItem('bills', JSON.stringify(updatedBills))
   }
 
+  const removeBill = index => {
+    const updatedBills = Array.from(bills)
+    updatedBills.splice(index,1)
+    setBills(updatedBills)
+    localStorage.setItem('bills', JSON.stringify(updatedBills))
+  }
+
   const showAddCategory = () => {
     setShouldShowAddCategory(true)
   }
@@ -69,7 +76,7 @@ function App() {
           <NavBar categories={categories} showAddCategory={showAddCategory}/>
           <div className="container flex">
             <div className="w-1/2">
-              <BillsTable bills={bills} showAddBill={showAddBill} />
+              <BillsTable bills={bills} showAddBill={showAddBill} removeBill={removeBill}/>
             </div>
             <div className="w-1/2">
               <Chart />
