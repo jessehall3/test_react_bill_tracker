@@ -7,12 +7,13 @@ function AddBill(props) {
   const [category, setCategory] = useState(props.categories[0])
   const [date, setDate] = useState(new Date())
 
-  const handleChangeDate = date => {
-    setDate(date)
+  const handleChangeDate = newDate => {
+    setDate(newDate)
   }
 
   const handleChangeAmount = e => {
-    setAmount(parseInt(e.target.value), 10)
+    const value = parseInt(e.target.value) || 0
+    setAmount(value, 10)
   }
 
   const handleChangeCategory = e => {
@@ -22,10 +23,10 @@ function AddBill(props) {
   const handleSubmit = e => {
     e.preventDefault()
     if (!amount) {
-      alert('Please enter an amount.')
+      alert('Please enter an amount')
       return
     }
-    props.onSubmit(amount)
+    props.onSubmit(amount, category || props.categories[0], date)
   }
 
   return (
@@ -37,7 +38,7 @@ function AddBill(props) {
           <p>E.g. 'Electricity' or 'Gas' or 'Internet'</p>
           <div className="flex mt-4">
             <DatePicker selected={date} onChange={handleChangeDate} />
-            <select>
+            <select onChange={handleChangeCategory}>
             {props.categories
               ? props.categories.map((value, index) => {
                   return (
