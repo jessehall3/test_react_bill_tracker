@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 function AddBill(props) {
   const [amount, setAmount] = useState(0)
   const [category, setCategory] = useState(props.categories[0])
+  const [date, setDate] = useState(new Date())
+
+  const handleChangeDate = date => {
+    setDate(date)
+  }
 
   const handleChangeAmount = e => {
     setAmount(parseInt(e.target.value), 10)
@@ -29,6 +36,7 @@ function AddBill(props) {
           <h1 className="text-grey-darkest">Enter a new Bill</h1>
           <p>E.g. 'Electricity' or 'Gas' or 'Internet'</p>
           <div className="flex mt-4">
+            <DatePicker selected={date} onChange={handleChangeDate} />
             <select>
             {props.categories
               ? props.categories.map((value, index) => {
