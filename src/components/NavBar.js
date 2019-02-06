@@ -34,6 +34,18 @@ function NavBar(props) {
             {value}
           </li>
       })
+      const all = <li
+        className={
+          liStyle +
+          (props.activeCategory === '' || props.activeCategory === undefined
+            ? ' bg-grey-dark'
+            : ' bg-grey-lighter')
+        }
+        onClick={() => setNewActiveCategory('')}
+        >
+          All
+        </li>
+        items.unshift(all)
     }
     return items
   }
