@@ -21,6 +21,10 @@ function AddBill(props) {
     return typeof num == 'number' && !isNaN(num);
   }
 
+  const handleCancel = () => {
+    props.closeAddBill()
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
     const amount = inputBillAmount.current.value;
@@ -63,6 +67,12 @@ function AddBill(props) {
               onClick={handleSubmit}
             >
               Add
+            </button>
+            <button
+              className="flex-no-shrink p-2 border-2 rounded border-teal"
+              onClick={handleCancel}
+            >
+              Cancel
             </button>
           </div>
         </div>

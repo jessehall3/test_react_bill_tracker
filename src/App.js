@@ -57,6 +57,10 @@ function App() {
     setShouldShowAddBill(true)
   }
 
+  const closeAddBill = () => {
+    setShouldShowAddBill(false)
+  }
+
   useEffect(() => {
     const categoriesInLocalStorage = JSON.parse(
       localStorage.getItem('categories')
@@ -79,7 +83,7 @@ function App() {
     {shouldShowAddCategory ? (
           <AddCategory onSubmit={addCategory} />
         ) : shouldShowAddBill ? (
-          <AddBill onSubmit={addBill} categories={categories} />
+          <AddBill onSubmit={addBill} categories={categories} closeAddBill={closeAddBill} />
         ) : (
         <div>
           <NavBar
