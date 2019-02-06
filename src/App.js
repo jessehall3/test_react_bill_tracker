@@ -53,11 +53,15 @@ function App() {
     setShouldShowAddCategory(true)
   }
 
+  const hideAddCategory = () => {
+    setShouldShowAddCategory(false)
+  }
+
   const showAddBill = () => {
     setShouldShowAddBill(true)
   }
 
-  const closeAddBill = () => {
+  const hideAddBill = () => {
     setShouldShowAddBill(false)
   }
 
@@ -81,9 +85,9 @@ function App() {
   return (
     <div className="App">
     {shouldShowAddCategory ? (
-          <AddCategory onSubmit={addCategory} />
+          <AddCategory onSubmit={addCategory} hideAddCategory={hideAddCategory}/>
         ) : shouldShowAddBill ? (
-          <AddBill onSubmit={addBill} categories={categories} closeAddBill={closeAddBill} />
+          <AddBill onSubmit={addBill} categories={categories} hideAddBill={hideAddBill} />
         ) : (
         <div>
           <NavBar

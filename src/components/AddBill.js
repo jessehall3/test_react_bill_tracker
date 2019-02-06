@@ -22,7 +22,7 @@ function AddBill(props) {
   }
 
   const handleCancel = () => {
-    props.closeAddBill()
+    props.hideAddBill()
   }
 
   const handleSubmit = e => {

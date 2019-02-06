@@ -7,6 +7,10 @@ function AddCategory(props) {
     setCategory(e.target.value)
   }
 
+  const handleCancel = () => {
+    props.hideAddCategory()
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
     if (!category) {
@@ -35,6 +39,12 @@ function AddCategory(props) {
               onClick={handleSubmit}
             >
               Add
+            </button>
+            <button
+              className="flex-no-shrink p-2 border-2 rounded border-teal"
+              onClick={handleCancel}
+            >
+              Cancel
             </button>
           </div>
         </div>
